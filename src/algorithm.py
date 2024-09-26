@@ -14,10 +14,7 @@ def calculate_payoff(strategies):
             final_points[i] = 3 + num_buses
 
     return final_points
-
-def get_player_strategy(player_num):
-    while True:
-        strategy = input(f"Player {player_num}, choose your mode of transportation, car of bus?").capitalize()
+    
 
 def main():
     n = int(input("Enter teh number of students going to school?"))
