@@ -30,17 +30,17 @@ def main():
     #     print("Invalid input! Please try again.")
     #     n = input("Enter the number of students going to school? ")
 
-    player_choies = []
+    player_choices = []
 
     for i in range(n):
         strategy = input(f"Student {i+1}, choose your mode of transportation, car or bus? ")
         while strategy not in player_strategies:
             print("Invalid mode of transportation! Please try again.")
             strategy = input(f"Student {i+1}, choose your mode of transportation, car or bus? ")
-        player_choies.append(strategy)
+        player_choices.append(strategy)
 
     counter = 0
-    for i in player_choies:
+    for i in player_choices:
         if i == 'car':
             road_space.add_car(counter)
             counter = counter + 1
