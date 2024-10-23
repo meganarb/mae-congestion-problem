@@ -1,7 +1,8 @@
 from road import *
 import math
 
-player_strategies = ["car", "bus"]
+# 1: Car, 2: Bus
+player_strategies = ["1", "2"]
 #players_dict = {}
 
 def calculate_road(road):
@@ -94,18 +95,20 @@ def main():
     player_choices = []
 
     for i in range(n):
-        strategy = input(f"Student {i+1}, choose your mode of transportation, car or bus? ")
+        strategy = input(f"Student {i+1}, choose your mode of transportation | Car(1) or Bus(2)? ")
         while strategy not in player_strategies:
             print("Invalid mode of transportation! Please try again.")
-            strategy = input(f"Student {i+1}, choose your mode of transportation, car or bus? ")
+            strategy = input(f"Student {i+1}, choose your mode of transportation | Car(1) or Bus(2)? ")
         player_choices.append(strategy)
 
     counter = 0
     for i in player_choices:
-        if i == 'car':
+        # 1: CAR
+        if i == '1':
             road_space.add_car(counter)
             counter = counter + 1
-        if i == 'bus':
+        # 2: BUS
+        if i == '2':
             road_space.add_buses(counter)
             counter = counter + 1
 
