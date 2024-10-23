@@ -58,7 +58,7 @@ class TestCalculateRoadFunc(unittest.TestCase):
 
 class TestCalculateBusPayoff(unittest.TestCase):
 
-    def test1(self):
+    def testHalfRoad(self):
         road = Road(20)
 
         road.add_buses(1)
@@ -74,3 +74,13 @@ class TestCalculateBusPayoff(unittest.TestCase):
         road.add_car(10)
 
         self.assertEqual(calculate_bus_payoff(road), 0.5)
+
+    def testOnlyOneBus(self):
+
+        road = Road(20)
+
+        road.add_buses(1)
+        road.add_buses(2)
+        road.add_buses(3)
+
+        self.assertEqual(calculate_bus_payoff(road), 0.75)

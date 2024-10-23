@@ -23,12 +23,16 @@ def calculate_bus_payoff(road):
     if len(road.get_buses()) > 0:
         bus_space = road.get_buses()[0].get_road_space()
         num_bus = len(road.get_buses())
-    else: bus_space = 0
+    else:
+        bus_space = 0
+        num_bus = 0
 
     if len(road.get_cars()) > 0:
         car_space = road.get_cars()[0].get_road_space()
         num_car = len(road.get_cars())
-    else: car_space = 0
+    else:
+        car_space = 0
+        num_car = 0
 
     # completely arbitrary, can change or remove
     bus_delay = 3
