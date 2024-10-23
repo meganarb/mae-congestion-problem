@@ -1,4 +1,5 @@
 from road import *
+import math
 
 player_strategies = ["car", "bus"]
 #players_dict = {}
@@ -15,6 +16,25 @@ def calculate_road(road):
         road_taken = road_taken + 1
 
     return road_taken/road_space
+
+def calculate_bus_payoff(road):
+    road_space = road.get_space()
+
+    if road.get_buses().size() > 0:
+        bus_space = road.get_buses()[0].get_road_space()
+        num_bus = road.get_buses().size()
+    else: bus_space = 0
+
+    if road.get_cars().size() > 0:
+        car_space = road.get_cars()[0].get_road_space()
+        num_car = road.get_cars().size()
+    else: car_space = 0
+
+    # completely arbitrary, can change or remove
+    bus_delay = 3
+
+    return (road_space - (bus_space * num_bus + car_space * num_car) - bus_delay) / road_space
+
 
 def main():
     road = int(input("Enter the amount of road space: "))
