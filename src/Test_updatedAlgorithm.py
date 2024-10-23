@@ -73,7 +73,7 @@ class TestCalculateBusPayoff(unittest.TestCase):
         road.add_car(9)
         road.add_car(10)
 
-        self.assertEqual(calculate_bus_payoff(road), 0.5)
+        self.assertEqual(calculate_bus_payoff(road), 0.65)
 
     def testOnlyOneBus(self):
 
@@ -83,7 +83,7 @@ class TestCalculateBusPayoff(unittest.TestCase):
         road.add_buses(2)
         road.add_buses(3)
 
-        self.assertEqual(calculate_bus_payoff(road), 0.75)
+        self.assertEqual(calculate_bus_payoff(road), 0.9)
 
 
 class TestCalculateCarPayoff(unittest.TestCase):
