@@ -64,6 +64,19 @@ def calculate_car_payoff(road):
     if payoff > 0: return payoff
     return 0
 
+def calculate_payoffs(road):
+
+    bus_payoff = calculate_bus_payoff(road)
+    car_payoff = calculate_car_payoff(road)
+
+    for bus in road.get_buses():
+        for commuter in bus.get_players():
+            commuter.set_payoff(bus_payoff)
+
+    for car in road.get_cars():
+        car.get_players()[0].set_payoff(car_payoff)
+
+
 def main():
     road = int(input("Enter the amount of road space: "))
     # while not road.isdigit():
