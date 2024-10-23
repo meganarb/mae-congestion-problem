@@ -111,7 +111,7 @@ def main():
 
     game_space_taken = calculate_road(road_space)
 
-    print(f"This is the amount of road taken up: {game_space_taken}.")
+    print(f"This is the amount of road taken up: {game_space_taken * 100}%.")
 
 
 if __name__ == "__main__":
