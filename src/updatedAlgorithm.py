@@ -20,14 +20,14 @@ def calculate_road(road):
 def calculate_bus_payoff(road):
     road_space = road.get_space()
 
-    if road.get_buses().size() > 0:
+    if len(road.get_buses()) > 0:
         bus_space = road.get_buses()[0].get_road_space()
-        num_bus = road.get_buses().size()
+        num_bus = len(road.get_buses())
     else: bus_space = 0
 
-    if road.get_cars().size() > 0:
+    if len(road.get_cars()) > 0:
         car_space = road.get_cars()[0].get_road_space()
-        num_car = road.get_cars().size()
+        num_car = len(road.get_cars())
     else: car_space = 0
 
     # completely arbitrary, can change or remove
