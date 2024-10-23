@@ -36,9 +36,9 @@ def calculate_bus_payoff(road):
         num_car = 0
 
     # completely arbitrary, can change or remove
-    bus_delay = 3
+    bus_delay = road_space * 0.05
 
-    payoff = (road_space - (bus_space * num_bus + car_space * num_car)) / road_space
+    payoff = (road_space - (bus_space * num_bus + car_space * num_car + bus_delay)) / road_space
 
     if payoff > 0: return payoff
     return 0
