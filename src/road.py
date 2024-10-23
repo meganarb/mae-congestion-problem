@@ -3,6 +3,9 @@ class Player:
         self.id = id
         self.payoff = 0
 
+    def set_payoff(self, payoff):
+        self.payoff = payoff
+
     def get_id(self):
         return self.id
     
