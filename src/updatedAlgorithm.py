@@ -37,7 +37,10 @@ def calculate_bus_payoff(road):
     # completely arbitrary, can change or remove
     bus_delay = 3
 
-    return (road_space - (bus_space * num_bus + car_space * num_car)) / road_space
+    payoff = (road_space - (bus_space * num_bus + car_space * num_car)) / road_space
+
+    if payoff > 0: return payoff
+    return 0
 
 
 def calculate_car_payoff(road):
@@ -57,7 +60,9 @@ def calculate_car_payoff(road):
         car_space = 0
         num_car = 0
 
-    return (road_space - (bus_space * num_bus + car_space * (num_car - 1))) / road_space
+    payoff = (road_space - (bus_space * num_bus + car_space * (num_car - 1))) / road_space
+    if payoff > 0: return payoff
+    return 0
 
 def main():
     road = int(input("Enter the amount of road space: "))
