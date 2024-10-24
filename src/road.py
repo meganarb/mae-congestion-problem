@@ -53,11 +53,13 @@ class Road:
         self.space = space
         self.cars = []
         self.buses = []
+        self.players = []
 
     def add_car(self, id):
         car = Car()
         car.add_player(id)
         self.cars.append(car)
+        self.players.append(self.cars[-1].get_players()[0])
 
     def add_buses(self, id):
         if not self.buses:
@@ -70,6 +72,7 @@ class Road:
                 new_bus = Bus()
                 new_bus.add_player(id)
                 self.buses.append(new_bus)
+        self.players.append(self.buses[-1].get_players()[-1])
 
     def get_buses(self):
         return self.buses
@@ -79,3 +82,6 @@ class Road:
     
     def get_space(self):
         return self.space
+
+    def get_players(self):
+        return self.players

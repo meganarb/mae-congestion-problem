@@ -116,6 +116,12 @@ def main():
 
     print(f"This is the amount of road taken up: {game_space_taken * 100}%.")
 
+    calculate_payoffs(road_space)
+
+    print("Payoffs:")
+    for player in road_space.get_players():
+        print(f"Player {player.get_id()}: {player.get_payoff()}")
+
 
 if __name__ == "__main__":
     main()
