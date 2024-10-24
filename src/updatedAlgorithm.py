@@ -113,12 +113,13 @@ def main():
             counter = counter + 1
 
     game_space_taken = calculate_road(road_space)
-
-    print(f"This is the amount of road taken up: {game_space_taken * 100}%.")
+    print()
+    print(f"Amount of road taken up: {game_space_taken * 100}%.")
 
     calculate_payoffs(road_space)
 
     print("Payoffs:")
+    print()
     for player in road_space.get_players():
         print(f"Player {player.get_id()}: {player.get_payoff()}")
 
