@@ -7,7 +7,7 @@ class Player:
         self.payoff = payoff
 
     def get_id(self):
-        return self.id
+        return 1 + self.id
     
     def get_payoff(self):
         return self.payoff
