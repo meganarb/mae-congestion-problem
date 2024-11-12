@@ -41,5 +41,46 @@ class TestCalculateCarDelay(unittest.TestCase):
         print(f"Calculated Car Delay: {car_delay:.2f}")
         self.assertAlmostEqual(car_delay, 3.1, delta=0.35)
 
+# New Tests to Compare Delays with Different Numbers of Cars
+
+class TestBusAndCarDelaysComparison(unittest.TestCase):
+    def test_delays_with_5_buses_and_2_cars(self):
+        road = Road(20)
+        print("\nTEST 4: Bus and Car Delays with 5 buses and 2 cars on a 20-unit road")
+        
+        # Adding players
+        for i in range(5):   # Add 5 buses
+            road.add_bus_player(Player(i))
+        
+        for i in range(2):   # Add 2 cars
+            road.add_car(Player(i + 5))
+        
+        # Calculating delays
+        bus_delay = calculate_bus_delay(road)
+        car_delay = calculate_car_delay(road)
+        
+        # Print results
+        print(f"Calculated Bus Delay (5 buses, 2 cars): {bus_delay:.2f}")
+        print(f"Calculated Car Delay (5 buses, 2 cars): {car_delay:.2f}")
+
+    def test_delays_with_5_buses_and_10_cars(self):
+        road = Road(20)
+        print("\nTEST 5: Bus and Car Delays with 5 buses and 10 cars on a 20-unit road")
+        
+        # Adding players
+        for i in range(5):   # Add 5 buses
+            road.add_bus_player(Player(i))
+        
+        for i in range(10):   # Add 10 cars
+            road.add_car(Player(i + 5))
+        
+        # Calculating delays
+        bus_delay = calculate_bus_delay(road)
+        car_delay = calculate_car_delay(road)
+        
+        # Print results
+        print(f"Calculated Bus Delay (5 buses, 10 cars): {bus_delay:.2f}")
+        print(f"Calculated Car Delay (5 buses, 10 cars): {car_delay:.2f}")
+
 if __name__ == '__main__':
     unittest.main()
