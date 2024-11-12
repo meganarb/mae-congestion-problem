@@ -1,10 +1,10 @@
 class Player:
     def __init__(self, id):
         self.id = id
-        self.delay = 0  # car has no delay (default..)
+        self.delay = 0
         
     def get_id(self):
-        return 1 + self.id
+        return self.id
 
     def set_delay(self, delay):
         self.delay = delay
@@ -18,23 +18,25 @@ class Road:
         self.busPlayers = []
 
     def add_car(self, player_obj):
-        if player_obj.id not in self.carPlayers:
-            self.carPlayers.append(id)
+        if player_obj not in self.carPlayers:
+            self.carPlayers.append(player_obj)
             return True
         return False
     
     def add_bus_player(self, player_obj):
-        if player_obj.id not in self.busPlayers:
-            self.busPlayers.append(id)
+        if player_obj not in self.busPlayers:
+            self.busPlayers.append(player_obj)
             return True
         return False
     
-    def get_cars(self):
-        return self.cars
+    def get_occupied_space(self):
+        return len(self.carPlayers) * self.car_space + len(self.busPlayers) * self.bus_space
     
-    def get_busPlayres(self):
+    def get_cars(self):
+        return self.carPlayers
+    
+    def get_busPlayers(self):
         return self.busPlayers
 
     def get_players(self):
-        all_players = self.carPlayers + self.busPlayers
-        return all_players
+        return self.carPlayers + self.busPlayers

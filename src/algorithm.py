@@ -2,107 +2,87 @@ from newRoad import *
 import math
 import random
 
-# 1: Car, 2: Bus
 player_strategies = ["1", "2"]
-#players_dict = {}
 
 def calculate_road(road):
-    road_taken = 0
-    road_space = road.road_space
-
-    for i in range(len(road.carPlayers)):
-        road_taken = road_taken + 1
-
-    return road_taken/road_space
+    road_taken = len(road.carPlayers) + len(road.busPlayers) * 2  # Buses take twice the space
+    return road_taken / road.road_space
 
 def F(x):
-    t = 0
-    L = 0
-    c = 0
-    if x > t: return L
-    else: return c*x
+    t = 0.5  # Threshold
+    L = 10   # Maximum delay
+    c = 10   # Congestion factor
+    return min(L, c * x)
 
 def calculate_bus_delay(road):
     road_space = road.road_space
     cars = len(road.get_cars())
-    buses = 0 #change
-    Sc = road.car_space
-    Sb = road.bus_space * buses
-    delay = 0 #change
-    return F(Sc * cars / road_space) + delay + Sb / road_space
+    buses = len(road.get_busPlayers())
+    Sc = road.car_space  # Space taken by a car
+    Sb = road.bus_space  # Space taken by a bus
+    B = 2  # Fixed delay for buses
+
+    # Formula: F((Sc * C) / R) + B + (Sb / R)
+    congestion_factor = (Sc * cars) / road_space
+    return F(congestion_factor) + B + (Sb / road_space)
 
 def calculate_car_delay(road):
     road_space = road.road_space
     cars = len(road.get_cars())
-    buses = 0 #change
-    Sc = road.car_space
-    Sb = road.bus_space * buses
-    delay = 0 #change
-    return F(((Sc * cars) / road_space) + (Sc / road_space)) + (Sb / road_space)
+    buses = len(road.get_busPlayers())
+    Sc = road.car_space  # Space taken by a car
+    Sb = road.bus_space  # Space taken by a bus
 
-# first iteration of switching stategy function
-def switch_strategy(road, congestion_lvl):
-    threshhold = 50.0 #threshold
-    # maybe adjust delays if threshold met
+    # Formula: F((Sc * C / R) + (Sc / R)) + (Sb / R)
+    congestion_factor = (Sc * cars) / road_space
+    return F(congestion_factor + Sc / road_space) + (Sb / road_space)
 
-    if(road.space // len(road.carPlayers)):
-        for player in road.get_players:
-            if player in road.carPlayers:
-                if random.random() < 0.7:
-                    print("Switch to bus")
-                    road.add_bus_playe(player)
-                    road.carPlayers.remove(player)
-            elif player in road.busPlayers:
-                if random.random() < 0.7:
-                    print("Switch to car")
-                    road.add_bus_player(player)
-                    road.busPlayers.remove(player)
 
+def switch_strategy(road):
+    for player in road.get_players():
+        if player in road.carPlayers and random.random() < 0.3:
+            road.add_bus_player(player)
+            road.carPlayers.remove(player)
+            print(f"Player {player.get_id()} switches to bus.")
+        elif player in road.busPlayers and random.random() < 0.3:
+            road.add_car(player)
+            road.busPlayers.remove(player)
+            print(f"Player {player.get_id()} switches to car.")
 
 def main():
-    road = int(input("Enter the amount of road space: "))
-    # while not road.isdigit():
-    #     print("Invalid input! Please try again.")
-    #     road = input("Enter a number!")
-
-    road_space = Road(road)
-
-
-    n = int(input("Enter the number of students going to school? "))
-    # while not n.isdigit():
-    #     print("Invalid input! Please try again.")
-    #     n = input("Enter the number of students going to school? ")
-
+    road_space = int(input("Enter the amount of road space: "))
+    n = int(input("Enter the number of students going to school: "))
     rounds = int(input("Enter the number of days to simulate: "))
+    allow_switching = input("Allow strategy switching? (y/n): ").lower() == 'y'
 
-    player_choices = []
+    road = Road(road_space)
 
     for i in range(n):
         strategy = input(f"Student {i+1}, choose your mode of transportation | Car(1) or Bus(2)? ")
         while strategy not in player_strategies:
             print("Invalid mode of transportation! Please try again.")
             strategy = input(f"Student {i+1}, choose your mode of transportation | Car(1) or Bus(2)? ")
-        player_choices.append(strategy)
-
-    counter = 0
-    for i in player_choices:
-        # 1: CAR
-        if i == '1':
-            road_space.add_car(Player(counter))
-            counter = counter + 1
-        # 2: BUS
-        if i == '2':
-            road_space.add_bus_player(Player(counter))
-            counter = counter + 1
+        
+        player = Player(i)
+        if strategy == '1':
+            road.add_car(player)
+        else:
+            road.add_bus_player(player)
 
     for day in range(rounds):
         print(f"\nDay {day + 1}: ")
-        congestion_lvl = calculate_road(road_space)
-        print(f"Amount of road taken up: {congestion_lvl * 100}%.")
+        congestion_lvl = calculate_road(road)
+        print(f"Amount of road taken up: {congestion_lvl * 100:.2f}%.")
 
-        for player in road_space.get_players():
-            print(f"Player {player.id}: {player.delay}")
-        switch_strategy(road_space, congestion_lvl)
+        for player in road.get_players():
+            if player in road.carPlayers:
+                player.set_delay(calculate_car_delay(road))
+            else:
+                player.set_delay(calculate_bus_delay(road))
+            print(f"Player {player.get_id()}: Delay = {player.delay:.2f}")
+        
+        if allow_switching:
+            switch_strategy(road)
 
 if __name__ == "__main__":
     main()

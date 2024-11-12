@@ -1,134 +1,45 @@
 import unittest
-
-from numpy.ma.testutils import assert_equal
-
-from updatedAlgorithm import *
+from newRoad import Road, Player
+from algorithm import calculate_road, calculate_bus_delay, calculate_car_delay
 
 class TestCalculateRoadFunc(unittest.TestCase):
-
-    def test1(self):
+    def test_road_usage(self):
         road = Road(20)
+        print("\nTEST 1: Road Usage with 20 units of road space")
+        for i in range(7):
+            road.add_bus_player(Player(i))
+        for i in range(7, 10):
+            road.add_car(Player(i))
+        
+        road_usage = calculate_road(road)
+        print(f"Amount of road taken up: {road_usage * 100:.2f}%")
+        self.assertAlmostEqual(road_usage, 0.85, places=2)
 
-        road.add_buses(1)
-        road.add_buses(2)
-        road.add_buses(3)
-        road.add_buses(4)
-        road.add_buses(5)
-        road.add_buses(6)
-        road.add_buses(7)
-
-        road.add_car(8)
-        road.add_car(9)
-        road.add_car(10)
-
-        self.assertEqual(calculate_road(road), 0.35)
-
-
-    def test2(self):
-        road = Road(10)
-
-        road.add_buses(1)
-        road.add_buses(2)
-        road.add_buses(3)
-        road.add_buses(4)
-        road.add_buses(5)
-        road.add_buses(6)
-        road.add_buses(7)
-
-        road.add_car(8)
-        road.add_car(9)
-        road.add_car(10)
-
-        self.assertEqual(calculate_road(road), 0.7)
-
-    def test3(self):
-        road = Road(40)
-
-        road.add_buses(1)
-        road.add_buses(2)
-        road.add_buses(3)
-        road.add_buses(4)
-        road.add_buses(5)
-        road.add_buses(6)
-        road.add_buses(7)
-
-        road.add_car(8)
-        road.add_car(9)
-        road.add_car(10)
-
-        self.assertEqual(calculate_road(road), .175)
-
-
-class TestCalculateBusPayoff(unittest.TestCase):
-
-    def testHalfRoad(self):
+class TestCalculateBusDelay(unittest.TestCase):
+    def test_bus_delay(self):
         road = Road(20)
+        print("\nTEST 2: Bus Delay with 5 buses and 5 cars on a 20-unit road")
+        for i in range(5):
+            road.add_bus_player(Player(i))
+        for i in range(5, 10):
+            road.add_car(Player(i))
 
-        road.add_buses(1)
-        road.add_buses(2)
-        road.add_buses(3)
-        road.add_buses(4)
-        road.add_buses(5)
-        road.add_buses(6)
-        road.add_buses(7)
+        bus_delay = calculate_bus_delay(road)
+        print(f"Calculated Bus Delay: {bus_delay:.2f}")
+        self.assertAlmostEqual(bus_delay, 4.6, delta=0.5)
 
-        road.add_car(8)
-        road.add_car(9)
-        road.add_car(10)
-
-        self.assertEqual(calculate_bus_payoff(road), 0.65)
-
-    def testOnlyOneBus(self):
-
+class TestCalculateCarDelay(unittest.TestCase):
+    def test_car_delay(self):
         road = Road(20)
+        print("\nTEST 3: Car Delay with 5 cars and 2 buses on a 20-unit road")
+        for i in range(5):
+            road.add_car(Player(i))
+        for i in range(5, 7):
+            road.add_bus_player(Player(i))
 
-        road.add_buses(1)
-        road.add_buses(2)
-        road.add_buses(3)
+        car_delay = calculate_car_delay(road)
+        print(f"Calculated Car Delay: {car_delay:.2f}")
+        self.assertAlmostEqual(car_delay, 3.1, delta=0.35)
 
-        self.assertEqual(calculate_bus_payoff(road), 0.9)
-
-
-class TestCalculateCarPayoff(unittest.TestCase):
-
-    def testOneCar(self):
-
-        road = Road(20)
-
-        road.add_car(1)
-
-        self.assertEqual(calculate_car_payoff(road), 1)
-
-
-    def testFiveCar(self):
-
-        road = Road(20)
-        road.add_car(1)
-        road.add_car(2)
-        road.add_car(3)
-        road.add_car(4)
-        road.add_car(5)
-
-        self.assertEqual(calculate_car_payoff(road), 0.8)
-
-
-    def testRoadFull(self):
-
-        road = Road(10)
-
-        road.add_car(1)
-        road.add_car(2)
-        road.add_car(3)
-        road.add_car(4)
-        road.add_car(5)
-        road.add_car(6)
-
-        road.add_buses(6)
-        road.add_buses(7)
-        road.add_buses(8)
-        road.add_buses(9)
-        road.add_buses(10)
-        road.add_buses(11)
-        road.add_buses(12)
-
-        self.assertEqual(calculate_car_payoff(road), 0)
+if __name__ == '__main__':
+    unittest.main()
