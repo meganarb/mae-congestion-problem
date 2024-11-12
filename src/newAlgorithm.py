@@ -35,33 +35,6 @@ def calculate_bus_delay(road):
     delay = 0 #change
     return F(Sc * cars / road_space) + delay + Sb / road_space
 
-
-def calculate_bus_payoff(road):
-    road_space = road.get_space()
-    # s sub b => (road_space * numBuses) / total_road_space
-    if len(road.get_buses()) > 0:
-        bus_space = road.get_buses()[0].get_road_space()
-        num_bus = len(road.get_buses())
-    else:
-        bus_space = 0
-        num_bus = 0
-
-    if len(road.get_cars()) > 0:
-        car_space = road.get_cars()[0].get_road_space()
-        num_car = len(road.get_cars())
-    else:
-        car_space = 0
-        num_car = 0
-
-    # completely arbitrary, can change or remove
-    bus_delay = 0.05
-
-    payoff = (road_space - (bus_space * num_bus + car_space * num_car + bus_delay)) / road_space
-
-    if payoff > 0: return payoff
-    return 0
-
-
 def calculate_car_payoff(road):
     road_space = road.get_space()
 
