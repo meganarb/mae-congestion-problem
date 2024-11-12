@@ -44,17 +44,16 @@ def calculate_car_delay(road):
     delay = 0 #change
     return F(((Sc * cars) / road_space) + (Sc / road_space)) + (Sb / road_space)
 
-def calculate_payoffs(road):
+def calculate_delays(road):
 
-    bus_payoff = calculate_bus_payoff(road)
-    car_payoff = calculate_car_payoff(road)
+    bus_delay = calculate_bus_delay(road)
+    car_delay = calculate_car_delay(road)
 
-    for bus in road.get_buses():
-        for commuter in bus.get_players():
-            commuter.set_payoff(bus_payoff)
+    for player in road.carPlayers:
+        player.set_delay(car_delay)
 
-    for car in road.get_cars():
-        car.get_players()[0].set_payoff(car_payoff)
+    for player in road.busPlayers:
+        player.set_delay(bus_delay)
 
 # first iteration of switching stategy function
 def switch_strategy(road, congestion_lvl):
