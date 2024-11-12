@@ -1,6 +1,6 @@
 import unittest
 from newRoad import Road, Player
-from algorithm import calculate_road, calculate_bus_delay, calculate_car_delay
+from algorithm import calculate_road, calculate_bus_delay, calculate_car_delay, switch_strategy
 
 class TestCalculateRoadFunc(unittest.TestCase):
     def test_road_usage(self):
@@ -41,46 +41,47 @@ class TestCalculateCarDelay(unittest.TestCase):
         print(f"Calculated Car Delay: {car_delay:.2f}")
         self.assertAlmostEqual(car_delay, 3.1, delta=0.35)
 
-# New Tests to Compare Delays with Different Numbers of Cars
+# New Test Case to Illustrate Strategy Switching
 
-class TestBusAndCarDelaysComparison(unittest.TestCase):
-    def test_delays_with_5_buses_and_2_cars(self):
-        road = Road(20)
-        print("\nTEST 4: Bus and Car Delays with 5 buses and 2 cars on a 20-unit road")
+class TestStrategySwitching(unittest.TestCase):
+    def test_strategy_switching(self):
+        # Initial setup
+        road_space = 20
+        num_players = 10
+        rounds = 5
+        allow_switching = True
         
-        # Adding players
-        for i in range(5):   # Add 5 buses
-            road.add_bus_player(Player(i))
-        
-        for i in range(2):   # Add 2 cars
-            road.add_car(Player(i + 5))
-        
-        # Calculating delays
-        bus_delay = calculate_bus_delay(road)
-        car_delay = calculate_car_delay(road)
-        
-        # Print results
-        print(f"Calculated Bus Delay (5 buses, 2 cars): {bus_delay:.2f}")
-        print(f"Calculated Car Delay (5 buses, 2 cars): {car_delay:.2f}")
+        print("\nTEST 4: Strategy Switching over multiple rounds")
 
-    def test_delays_with_5_buses_and_10_cars(self):
-        road = Road(20)
-        print("\nTEST 5: Bus and Car Delays with 5 buses and 10 cars on a 20-unit road")
+        # Create the road
+        road = Road(road_space)
+
+        # Add initial players (half cars, half buses)
+        for i in range(num_players // 2):
+            road.add_car(Player(i))
         
-        # Adding players
-        for i in range(5):   # Add 5 buses
+        for i in range(num_players // 2, num_players):
             road.add_bus_player(Player(i))
-        
-        for i in range(10):   # Add 10 cars
-            road.add_car(Player(i + 5))
-        
-        # Calculating delays
-        bus_delay = calculate_bus_delay(road)
-        car_delay = calculate_car_delay(road)
-        
-        # Print results
-        print(f"Calculated Bus Delay (5 buses, 10 cars): {bus_delay:.2f}")
-        print(f"Calculated Car Delay (5 buses, 10 cars): {car_delay:.2f}")
+
+        # Simulate multiple rounds with strategy switching
+        for day in range(rounds):
+            print(f"\nDay {day + 1}: ")
+            
+            # Calculate congestion level
+            congestion_lvl = calculate_road(road)
+            print(f"Amount of road taken up: {congestion_lvl * 100:.2f}%.")
+
+            # Calculate delays for all players
+            for player in road.get_players():
+                if player in road.carPlayers:
+                    player.set_delay(calculate_car_delay(road))
+                else:
+                    player.set_delay(calculate_bus_delay(road))
+                print(f"Player {player.get_id()}: Delay = {player.delay:.2f}")
+            
+            # Switch strategies if allowed
+            if allow_switching:
+                switch_strategy(road)
 
 if __name__ == '__main__':
     unittest.main()
