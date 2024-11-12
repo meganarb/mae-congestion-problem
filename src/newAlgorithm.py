@@ -26,6 +26,16 @@ def F(x):
     if x > t: return L
     else: return c*x
 
+def calculate_bus_delay(road):
+    road_space = road.road_space
+    cars = len(road.get_cars())
+    buses = 0 #change
+    Sc = road.car_space
+    Sb = road.bus_space * buses
+    delay = 0 #change
+    return F(Sc * cars / road_space) + delay + Sb / road_space
+
+
 def calculate_bus_payoff(road):
     road_space = road.get_space()
     # s sub b => (road_space * numBuses) / total_road_space
