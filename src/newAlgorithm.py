@@ -19,6 +19,13 @@ def calculate_road(road):
 
     return road_taken/road_space
 
+def F(x):
+    t = 0
+    L = 0
+    c = 0
+    if x > t: return L
+    else: return c*x
+
 def calculate_bus_payoff(road):
     road_space = road.get_space()
     # s sub b => (road_space * numBuses) / total_road_space
