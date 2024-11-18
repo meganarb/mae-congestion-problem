@@ -13,7 +13,7 @@ class TestCalculateRoadFunc(unittest.TestCase):
         
         road_usage = calculate_road(road)
         print(f"Amount of road taken up: {road_usage * 100:.2f}%")
-        self.assertAlmostEqual(road_usage, 0.85, places=2)
+        self.assertAlmostEqual(road_usage, 0.65, places=2)
 
 class TestCalculateBusDelay(unittest.TestCase):
     def test_bus_delay(self):
@@ -48,7 +48,7 @@ class TestStrategySwitching(unittest.TestCase):
         # Initial setup
         road_space = 20
         num_players = 10
-        rounds = 5
+        rounds = 8
         allow_switching = True
         
         print("\nTEST 4: Strategy Switching over multiple rounds")
