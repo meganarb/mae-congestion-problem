@@ -1,7 +1,7 @@
 class Player:
     def __init__(self, id):
         self.id = id
-        self.delay = 0
+        self.delay = 0  # car has no delay (default..)
         
     def get_id(self):
         return self.id
@@ -30,8 +30,8 @@ class Road:
         return False
     
     def get_occupied_space(self):
-        return len(self.carPlayers) * self.car_space + len(self.busPlayers) * self.bus_space
-    
+        return len(self.carPlayers) * self.car_space + 5 * self.bus_space
+
     def get_cars(self):
         return self.carPlayers
     
