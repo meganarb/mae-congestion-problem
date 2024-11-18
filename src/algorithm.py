@@ -2,11 +2,12 @@ from newRoad import *
 import math
 import random
 
+# 1: Car, 2: Bus
 player_strategies = ["1", "2"]
 
 # Function to calculate the percentage of road taken up by cars and buses
 def calculate_road(road):
-    road_taken = len(road.carPlayers) + len(road.busPlayers) * 2  # Buses take twice the space
+    road_taken = len(road.carPlayers) + 5 * 2  # Buses take twice the space
     return road_taken / road.road_space
 
 # Function F(x) that calculates delay based on congestion factor
@@ -43,15 +44,18 @@ def calculate_car_delay(road):
 
 # Function to switch strategies for players randomly between car and bus
 def switch_strategy(road):
+    current_congestion = calculate_road(road)
     for player in road.get_players():
-        if player in road.carPlayers and random.random() < 0.3:
-            road.add_bus_player(player)
-            road.carPlayers.remove(player)
-            print(f"Player {player.get_id()} switches to bus.")
+        if current_congestion > 0.60:
+            if player in road.carPlayers and random.random() < 0.3:
+                road.add_bus_player(player)
+                road.carPlayers.remove(player)
+                print(f"Player {player.get_id()} switches to bus.")
         elif player in road.busPlayers and random.random() < 0.3:
             road.add_car(player)
             road.busPlayers.remove(player)
             print(f"Player {player.get_id()} switches to car.")
+
 
 # Main function to run the simulation
 def main():
