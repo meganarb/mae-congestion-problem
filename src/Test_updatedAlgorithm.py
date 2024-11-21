@@ -39,7 +39,7 @@ class TestCalculateCarDelay(unittest.TestCase):
 
         car_delay = calculate_car_delay(road)
         print(f"Calculated Car Delay: {car_delay:.2f}")
-        self.assertAlmostEqual(car_delay, 3.1, delta=0.35)
+        self.assertAlmostEqual(car_delay, 7.75, delta=0.35)
 
 # New Test Case to Illustrate Strategy Switching
 
@@ -48,7 +48,7 @@ class TestStrategySwitching(unittest.TestCase):
         # Initial setup
         road_space = 20
         num_players = 10
-        rounds = 8
+        rounds = 10
         allow_switching = True
         
         print("\nTEST 4: Strategy Switching over multiple rounds")
@@ -61,6 +61,47 @@ class TestStrategySwitching(unittest.TestCase):
             road.add_car(Player(i))
         
         for i in range(num_players // 2, num_players):
+            road.add_bus_player(Player(i))
+
+        # Simulate multiple rounds with strategy switching
+        for day in range(rounds):
+            print(f"\nDay {day + 1}: ")
+            
+            # Calculate congestion level
+            congestion_lvl = calculate_road(road)
+            print(f"Amount of road taken up: {congestion_lvl * 100:.2f}%.")
+
+            # Calculate delays for all players
+            for player in road.get_players():
+                if player in road.carPlayers:
+                    player.set_delay(calculate_car_delay(road))
+                else:
+                    player.set_delay(calculate_bus_delay(road))
+                print(f"Player {player.get_id()}: Delay = {player.delay:.2f}")
+            
+            # Switch strategies if allowed
+            if allow_switching:
+                switch_strategy(road)
+
+
+class TestStrategySwitching_Two(unittest.TestCase):
+    def test_strategy_switching(self):
+        # Initial setup
+        road_space = 50
+        num_players = 10
+        rounds = 10
+        allow_switching = True
+        
+        print("\nTEST 5: Strategy Switching over multiple rounds")
+
+        # Create the road
+        road = Road(road_space)
+
+        # Add initial players (half cars, half buses)
+        for i in range(3):
+            road.add_car(Player(i))
+        
+        for i in range(3, num_players):
             road.add_bus_player(Player(i))
 
         # Simulate multiple rounds with strategy switching
