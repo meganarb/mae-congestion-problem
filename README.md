@@ -15,7 +15,7 @@ Below are our different stages of our project presentations.
       <br>The code in this "in-progress" repository is our 3rd iteration of our project.</br>
 
 ## How To Run
-### Make sure to have python working on your device and run the Testing_updatedAlgorithm.py to run our simulations!
+Make sure to have python working on your device and run the Testing_updatedAlgorithm.py to run our simulations!
 
 ## Project Scenario
 ### When students travel to campus they have the option to take a car or bus. Depending on their decision, it can contribute to road congestion because of the limit road space available. In our game, these are the contraints: 
