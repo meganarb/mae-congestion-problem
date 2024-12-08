@@ -2,11 +2,7 @@
 
 ## Project Overview
 
-<sub>
-
 The M.A.E Congestion Problem is a simulation project that explores traffic congestion as a collective action problem. The project focuses on the scenario where students commute to school, choosing between two transportation options: bus or car. This choice, when made by multiple individuals, leads to traffic issues due to limited road space.
-
-</sub>
 
 Below are our different stages of our project presentations.
 <h2>Project History</h2>
