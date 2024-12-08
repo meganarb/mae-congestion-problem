@@ -2,6 +2,7 @@
 <p>Our collective action problem focuses on traffic congestion where the limited resource is road space and one can choose a car or bus. Below are our different stages of our project presentations.<p>
 <h2>Project History</h2>
   <h3>1st Iteration:</h3>
+<<<<<<< HEAD
     <a href="https://uflorida-my.sharepoint.com/:p:/g/personal/egiron_ufl_edu/EbzQyMYT8TZAjG-deU-WgJwBD0MQurBSNnY9yr-mRaPqYw?e=a6fPDg">Click Here to View Our First Presentation<a>
     <br>The code in our repository is our first itteration of our project.</br>
   <h3>2nd Iteration.</h3>
@@ -42,3 +43,13 @@ Temp, update this before submitting!
 ![image](https://github.com/user-attachments/assets/9b67490f-94d9-4d1e-a1dd-8634db7c49ec)
 
 
+=======
+  <a href="https://uflorida-my.sharepoint.com/:p:/g/personal/egiron_ufl_edu/EbzQyMYT8TZAjG-deU-WgJwBD0MQurBSNnY9yr-mRaPqYw?e=a6fPDg">Click Here to View Our First Presentation<a>
+  <br>-  The code in our repository is our first itteration of our project.</br>
+  <h4>2nd Iteration.</h4>
+  <a href="https://uflorida-my.sharepoint.com/:p:/g/personal/egiron_ufl_edu/EQ8FcKa_Q3NIl_HodE7qynoBTn9bDdhCR5cewVtorGZaOQ?e=crPwxD">Click Here to View Our Second Presentation<a>
+  <br>The code in our Testing repository is our 2nd iteration of our project.</br>
+  <h4>3rd Iteration.</h4>
+  <a href="https://uflorida-my.sharepoint.com/:p:/g/personal/egiron_ufl_edu/EbMzl-hWpVZHmMbQq3wraO4BWp_hQrkxnr-2EPTRHGksAw?e=RFAFaa">Click Here to View Our Second Presentation<a>
+  <br>The code in our In Progress repository is our 3rd iteration of our project.</br>
+>>>>>>> in-progress
