@@ -44,4 +44,12 @@ Make sure to have python working on your device and run the Testing_updatedAlgor
 ![image](https://github.com/user-attachments/assets/8ddea3e0-1185-4719-8e9a-28a8f1b48114)
 ![image](https://github.com/user-attachments/assets/9b67490f-94d9-4d1e-a1dd-8634db7c49ec)
 
+## Simulation Analysis
+### Defined Variables
+* Bus constant:
+* Threshold to Switch:
+* Chance to switch if threshold met:
 
+### Results
+* Self note: provide screenshots of trend
+* Then talk about what is happening such as difference in delay related to road taken up and trends of delays and road taken up.
