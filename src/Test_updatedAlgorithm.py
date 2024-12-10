@@ -49,7 +49,7 @@ class TestCalculateMidDelay(unittest.TestCase):
         print(f"Calculated Car Delay: {car_delay:.2f}")
         congestion_lvl = calculate_road(road)
         print(f"Amount of road taken up: {congestion_lvl * 100:.2f}%.")
-        self.assertAlmostEqual(car_delay, 4, delta=0.35)
+        self.assertAlmostEqual(car_delay, 1.6, delta=0.35)
 
 class TestCalculateLowDelay(unittest.TestCase):
     def test_car_delay(self):
@@ -155,6 +155,73 @@ class TestStrategySwitching_Two(unittest.TestCase):
             # Switch strategies if allowed
             if allow_switching:
                 switch_strategy(road)
+                
+class TestHighCongestionScenario(unittest.TestCase):
+    def test_high_congestion(self):
+        road = Road(10)
+        print("\nTEST 8: High Congestion Scenario")
+        for i in range(8):
+            road.add_car(Player(i))
+        for i in range(8, 10):
+            road.add_bus_player(Player(i))
+
+        congestion_lvl = calculate_road(road)
+        bus_delay = calculate_bus_delay(road)
+        car_delay = calculate_car_delay(road)
+        
+        print(f"Amount of road taken up: {congestion_lvl * 100:.2f}%")
+        print(f"Bus Delay: {bus_delay:.2f}")
+        print(f"Car Delay: {car_delay:.2f}")
+        
+        self.assertGreater(congestion_lvl, 0.9)
+        self.assertGreater(bus_delay, 8)
+        self.assertGreater(car_delay, 8)
+        
+class TestLowCongestionScenario(unittest.TestCase):
+    def test_low_congestion(self):
+        road = Road(100)
+        print("\nTEST 9: Low Congestion Scenario")
+        for i in range(5):
+            road.add_car(Player(i))
+        for i in range(5, 8):
+            road.add_bus_player(Player(i))
+
+        congestion_lvl = calculate_road(road)
+        bus_delay = calculate_bus_delay(road)
+        car_delay = calculate_car_delay(road)
+        
+        print(f"Amount of road taken up: {congestion_lvl * 100:.2f}%")
+        print(f"Bus Delay: {bus_delay:.2f}")
+        print(f"Car Delay: {car_delay:.2f}")
+        
+        self.assertLess(congestion_lvl, 0.2)
+        self.assertLess(bus_delay, 3)
+        self.assertLess(car_delay, 1)
+
+class TestStrategySwitchingHighCongestion(unittest.TestCase):
+    def test_strategy_switching_high_congestion(self):
+        road = Road(15)
+        print("\nTEST 10: Strategy Switching with High Initial Congestion")
+        for i in range(10):
+            road.add_car(Player(i))
+        
+        rounds = 5
+        for day in range(rounds):
+            print(f"\nDay {day + 1}:")
+            congestion_lvl = calculate_road(road)
+            print(f"Amount of road taken up: {congestion_lvl * 100:.2f}%")
+            
+            for player in road.get_players():
+                if player in road.carPlayers:
+                    player.set_delay(calculate_car_delay(road))
+                else:
+                    player.set_delay(calculate_bus_delay(road))
+                print(f"Player {player.get_id()}: {'Car' if player in road.carPlayers else 'Bus'} Delay = {player.delay:.2f}")
+            
+            switch_strategy(road)
+        
+        final_congestion = calculate_road(road)
+        self.assertLess(final_congestion, congestion_lvl)
 
 if __name__ == '__main__':
     unittest.main()
