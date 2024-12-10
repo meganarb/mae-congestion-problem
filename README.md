@@ -47,18 +47,18 @@ $$F(x) = \left\lbrace \begin{array}{cl}L & : \ x \geq t \\\\cx & : \ otherwise\e
 
 ## Nash and Pareto
 Nash Equilibrium:
-* $$B > F\left(\frac{S_{c}}{R}\right)$$
+* $$B > F\left(\sum_{i=1}^{C}\left(\frac{S_{c}}{R}\right) +\frac{S_{c}}{R}\right) - F\left(\sum_{i=1}^{C}\frac{S_{c}}{R}\right)$$
   * when all players are traveling by car
   * when $$\frac{S_{c}*C}{R} \geq t$$
-* $$B < F\left(\frac{S_{c}}{R}\right)$$
+* $$B < F\left(\sum_{i=1}^{C}\left(\frac{S_{c}}{R}\right) +\frac{S_{c}}{R}\right) - F\left(\sum_{i=1}^{C}\frac{S_{c}}{R}\right)$$
   * when all players are traveling by bus
-* $$B = F\left(\frac{S_{c}}{R}\right)$$
+* $$B = F\left(\sum_{i=1}^{C}\left(\frac{S_{c}}{R}\right) +\frac{S_{c}}{R}\right) - F\left(\sum_{i=1}^{C}\frac{S_{c}}{R}\right)$$
   * nash for all player strategy combinations, except for when $$\frac{S_{c}*C}{R} = t$$
  
 Pareto:
-* $$B > F\left(\frac{S_{c}}{R}\right)$$
+* $$B > F\left(\sum_{i=1}^{C}\left(\frac{S_{c}}{R}\right) +\frac{S_{c}}{R}\right) - F\left(\sum_{i=1}^{C}\frac{S_{c}}{R}\right)$$
   * all strategy combinations are pareto except for when $$\frac{S_{c}*C}{R} = t$$ or all players are in cars
-* $$B \leq F\left(\frac{S_{c}}{R}\right)$$
+* $$B \leq F\left(\sum_{i=1}^{C}\left(\frac{S_{c}}{R}\right) +\frac{S_{c}}{R}\right) - F\left(\sum_{i=1}^{C}\frac{S_{c}}{R}\right)$$
   * when everyone takes the bus
 
 ## Simulation Analysis
