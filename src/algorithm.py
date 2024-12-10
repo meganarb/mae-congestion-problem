@@ -1,4 +1,3 @@
-
 from newRoad import *
 import math
 import random
@@ -41,21 +40,27 @@ def calculate_car_delay(road):
 
     # Formula: F((Sc * C / R) + (Sc / R)) + (Sb / R)
     congestion_factor = (Sc * cars) / road_space
-    return F(congestion_factor + Sc / road_space) + (Sb / road_space)
+    delay = F(congestion_factor + Sc / road_space) + (Sb / road_space)
+
+    if calculate_road(road) > 0.4:
+        delay = 2.5 * delay
+
+    return delay
 
 # Function to switch strategies for players randomly between car and bus
 def switch_strategy(road):
     current_congestion = calculate_road(road)
     for player in road.get_players():
-        if current_congestion > 0.60:
-            if player in road.carPlayers and random.random() < 0.3:
-                road.add_bus_player(player)
-                road.carPlayers.remove(player)
-                print(f"Player {player.get_id()} switches to bus.")
-        elif player in road.busPlayers and random.random() < 0.3:
+        car_delay = calculate_car_delay(road)
+        bus_delay = calculate_bus_delay(road)
+        if player in road.carPlayers and car_delay > bus_delay and random.random() < 0.2:
+            road.add_bus_player(player)
+            road.carPlayers.remove(player)
+            print(f"Player {player.get_id()} will switch to bus.")
+        elif player in road.busPlayers and bus_delay > car_delay and random.random() < 0.2:
             road.add_car(player)
             road.busPlayers.remove(player)
-            print(f"Player {player.get_id()} switches to car.")
+            print(f"Player {player.get_id()} will switch to car.")
 
 
 # Main function to run the simulation
