@@ -42,6 +42,8 @@ $$F(x) = \left\lbrace \begin{array}{cl}L & : \ x \geq t \\\\cx & : \ otherwise\e
 * $$C$$ – number of cars (other than the player)
 * $$R$$ – available road space 
 * $$B$$ – delay caused by taking bus
+* $$L$$ – large constant
+* $$c$$ – constant for scaling x in F
 
 ## Nash and Pareto
 ![image](https://github.com/user-attachments/assets/8ddea3e0-1185-4719-8e9a-28a8f1b48114)
