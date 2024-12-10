@@ -31,14 +31,17 @@ Make sure to have python working on your device and run the Testing_updatedAlgor
 * We make it a possibility for players to switch strategy depending on the level of congestion on the road (delay function is high)
 
 ## Delay Function
-![image](https://github.com/user-attachments/assets/77eb0717-681c-474e-83ae-e2555e13cb79)
-* Di(car) – delay when the player takes a car
-* Di(bus) – delay when the player takes the bus
-* Sc – size of car 
-* Sb – space taken by busses
-* C – number of cars (other than the player)
-* R – available road space 
-* B – delay caused by taking bus
+$$D_{i}(car) = F\left(\sum_{i=1}^{C}\left(\frac{S_{c}}{R}\right) +\frac{S_{c}}{R}\right) + \frac{S_{b}}{R}$$
+$$D_{i}(bus) = F\left(\sum_{i=1}^{C}\frac{S_{c}}{R}\right) + B +\frac{S_{b}}{R}$$
+$$F(x) = \left\lbrace \begin{array}{cl}L & : \ x \geq t \\\\cx & : \ otherwise\end{array} \right. $$
+
+* $$D_{i}(car)$$ – delay when the player takes a car
+* $$D_{i}(bus)$$ – delay when the player takes the bus
+* $$S_{c}$$ – size of car 
+* $$S_{b}$$ – space taken by busses
+* $$C$$ – number of cars (other than the player)
+* $$R$$ – available road space 
+* $$B$$ – delay caused by taking bus
 
 ## Nash and Pareto
 ![image](https://github.com/user-attachments/assets/8ddea3e0-1185-4719-8e9a-28a8f1b48114)
