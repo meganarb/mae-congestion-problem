@@ -46,8 +46,20 @@ $$F(x) = \left\lbrace \begin{array}{cl}L & : \ x \geq t \\\\cx & : \ otherwise\e
 * $$c$$ – constant for scaling x in F
 
 ## Nash and Pareto
-![image](https://github.com/user-attachments/assets/8ddea3e0-1185-4719-8e9a-28a8f1b48114)
-![image](https://github.com/user-attachments/assets/9b67490f-94d9-4d1e-a1dd-8634db7c49ec)
+Nash Equilibrium:
+* $$B > F\left(\frac{S_{c}}{R}\right)$$
+  * when all players are traveling by car
+  * when $$\frac{S_{c}*C}{R} \geq t$$
+* $$B < F\left(\frac{S_{c}}{R}\right)$$
+  * when all players are traveling by bus
+* $$B = F\left(\frac{S_{c}}{R}\right)$$
+  * nash for all player strategy combinations, except for when $$\frac{S_{c}*C}{R} = t$$
+ 
+Pareto:
+* $$B > F\left(\frac{S_{c}}{R}\right)$$
+  * all strategy combinations are pareto except for when $$\frac{S_{c}*C}{R} = t$$ or all players are in cars
+* $$B \leq F\left(\frac{S_{c}}{R}\right)$$
+  * when everyone takes the bus
 
 ## Simulation Analysis
 ### Defined Variables
