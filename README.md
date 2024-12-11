@@ -70,7 +70,10 @@ Pareto:
 
 ### Results
 * Self note: provide screenshots of trend
-* As more players take cars, more of the road is taken up, resulting in higher delays for all players
-* As more players take the bus, less of the road is taken up, resulting in lower delays for all players
-* When traffic becomes unbearable, players are more likely to switch to bus in an attempt to aleviate some traffic
-* When traffic is very light, such as when most players are taking the bus, players may be more likely to switch to car from bus
+* Congestion is affected by player choices:
+  * As more players take cars, more of the road is taken up, resulting in higher delays for all players
+  * As more players take the bus, less of the road is taken up, resulting in lower delays for all players
+* With the repetition mechanism, players had the chance to change their strategy day by day; some things we noticed:
+  * When traffic becomes unbearable, players are more likely to switch to bus in an attempt to aleviate some traffic
+  * When traffic is lighter, players are much less likely to switch
+  * After a certain number of rounds, if the congestion gets below a certain level, players stop switching entirely
