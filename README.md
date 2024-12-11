@@ -77,3 +77,5 @@ Pareto:
   * When traffic becomes unbearable, players are more likely to switch to bus in an attempt to aleviate some traffic
   * When traffic is lighter, players are much less likely to switch
   * After a certain number of rounds, if the congestion gets below a certain level, players stop switching entirely
+  * In cases where there is less space on the road, increasing the number of rounds makes it more likely to reach an equilibrium
+  * In cases where there is a lot of excess space on the road, equilibrium is reached quicker and the number of rounds does not affect it as much
