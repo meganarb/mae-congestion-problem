@@ -64,9 +64,9 @@ Pareto:
 
 ## Simulation Analysis
 ### Defined Variables
-* Bus constant: 
-* Threshold to Switch:
-* Chance to switch if threshold met:
+* Bus constant: 10
+* Threshold to Switch: 0.4
+* Chance to switch if threshold met: 0.3
 
 ### Results
 * Congestion is affected by player choices:
