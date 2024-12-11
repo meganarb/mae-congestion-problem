@@ -79,3 +79,16 @@ Pareto:
   * After a certain number of rounds, if the congestion gets below a certain level, players stop switching entirely
   * In cases where there is less space on the road, increasing the number of rounds makes it more likely to reach an equilibrium
   * In cases where there is a lot of excess space on the road, equilibrium is reached quicker and the number of rounds does not affect it as much
+ 
+Example:
+
+One-off game:
+
+<img src="https://github.com/user-attachments/assets/1ea203ac-cb06-44b3-94ab-09e8838d6843" alt="Alt Text" width="800" height="180">
+
+5th and 10th rounds of repeated game (with same starting values as one-off):
+
+<img src="https://github.com/user-attachments/assets/4c589d22-109b-4f6e-bee3-5052e97a221d" alt="Alt Text" width="300" height="300">
+
+<img src="https://github.com/user-attachments/assets/ac39ccc0-9f37-4b81-8d0d-602b80b1a337" alt="Alt Text" width="300" height="300">
+
