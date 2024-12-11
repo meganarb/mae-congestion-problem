@@ -64,9 +64,10 @@ Pareto:
 
 ## Simulation Analysis
 ### Defined Variables
-* Bus constant: 10
-* Threshold to Switch: 0.4
-* Chance to switch if threshold met: 0.3
+* Bus Constant: 10 (5 buses and each takes 2 spaces)
+* Threshold of Car Multiplier: 0.4 (40% or higher of road taken up, car delay grows)
+* Car Delay Multiplier: 2.5 (for cars when above threshold)
+* Chance to Switch if Allowed: 0.2 (chance to make the switches gradual over the rounds)
 
 ### Results
 * Congestion is affected by player choices:
