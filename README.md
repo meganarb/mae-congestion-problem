@@ -23,7 +23,7 @@ Make sure to have python working on your device and run the Testing_updatedAlgor
 * 2 strategies: car or bus
 * Limited amount of road space
 * Set number of buses
-* Players can switch strategy depending on delay.
+* Players can switch strategy depending on delay
 
 ## Mechanism
 * Current: we are using the repetition mechanism
@@ -43,6 +43,7 @@ $$F(x) = \left\lbrace \begin{array}{cl}L & : \ x \geq t \\\\cx & : \ otherwise\e
 * $$R$$ – available road space 
 * $$B$$ – delay caused by taking bus
 * $$L$$ – large constant
+* $$t$$ – threshold for traffic becoming too congested
 * $$c$$ – constant for scaling x in F
 
 ## Nash and Pareto
@@ -63,10 +64,13 @@ Pareto:
 
 ## Simulation Analysis
 ### Defined Variables
-* Bus constant:
+* Bus constant: 
 * Threshold to Switch:
 * Chance to switch if threshold met:
 
 ### Results
 * Self note: provide screenshots of trend
-* Then talk about what is happening such as difference in delay related to road taken up and trends of delays and road taken up.
+* As more players take cars, more of the road is taken up, resulting in higher delays for all players
+* As more players take the bus, less of the road is taken up, resulting in lower delays for all players
+* When traffic becomes unbearable, players are more likely to switch to bus in an attempt to aleviate some traffic
+* When traffic is very light, such as when most players are taking the bus, players may be more likely to switch to car from bus
