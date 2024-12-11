@@ -69,7 +69,6 @@ Pareto:
 * Chance to switch if threshold met:
 
 ### Results
-* Self note: provide screenshots of trend
 * Congestion is affected by player choices:
   * As more players take cars, more of the road is taken up, resulting in higher delays for all players
   * As more players take the bus, less of the road is taken up, resulting in lower delays for all players
