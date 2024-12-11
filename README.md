@@ -50,15 +50,15 @@ $$F(x) = \left\lbrace \begin{array}{cl}L & : \ x \geq t \\\\cx & : \ otherwise\e
 Nash Equilibrium:
 * $$B > F\left(\sum_{i=1}^{C}\left(\frac{S_{c}}{R}\right) +\frac{S_{c}}{R}\right) - F\left(\sum_{i=1}^{C}\frac{S_{c}}{R}\right)$$
   * when all players are traveling by car
-  * when $$\frac{S_{c}*C}{R} \geq t$$
+  * when $$\sum_{i=1}^{C}\frac{S_{c}}{R} \geq t$$
 * $$B < F\left(\sum_{i=1}^{C}\left(\frac{S_{c}}{R}\right) +\frac{S_{c}}{R}\right) - F\left(\sum_{i=1}^{C}\frac{S_{c}}{R}\right)$$
   * when all players are traveling by bus
 * $$B = F\left(\sum_{i=1}^{C}\left(\frac{S_{c}}{R}\right) +\frac{S_{c}}{R}\right) - F\left(\sum_{i=1}^{C}\frac{S_{c}}{R}\right)$$
-  * nash for all player strategy combinations, except for when $$\frac{S_{c}*C}{R} = t$$
+  * nash for all player strategy combinations, except for when $$\sum_{i=1}^{C}\frac{S_{c}}{R} = t$$   
  
 Pareto:
 * $$B > F\left(\sum_{i=1}^{C}\left(\frac{S_{c}}{R}\right) +\frac{S_{c}}{R}\right) - F\left(\sum_{i=1}^{C}\frac{S_{c}}{R}\right)$$
-  * all strategy combinations are pareto except for when $$\frac{S_{c}*C}{R} = t$$ or all players are in cars
+  * all strategy combinations are pareto except for when $$\sum_{i=1}^{C}\frac{S_{c}}{R} = t$$ or all players are in cars
 * $$B \leq F\left(\sum_{i=1}^{C}\left(\frac{S_{c}}{R}\right) +\frac{S_{c}}{R}\right) - F\left(\sum_{i=1}^{C}\frac{S_{c}}{R}\right)$$
   * when everyone takes the bus
 
