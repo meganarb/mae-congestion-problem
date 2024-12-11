@@ -113,6 +113,47 @@ class TestStrategySwitching(unittest.TestCase):
             if allow_switching:
                 switch_strategy(road)
 
+    def test_strategy_switching_20rounds(self):
+        # same as above test case, but double amount of rounds
+        # Initial setup
+        road_space = 20
+        num_players = 10
+        rounds = 20
+        allow_switching = True
+
+        print("\nTEST 4: Strategy Switching over multiple rounds")
+
+        # Create the road
+        road = Road(road_space)
+
+        # Add initial players (half cars, half buses)
+        for i in range(num_players // 2):
+            road.add_car(Player(i))
+
+        for i in range(num_players // 2, num_players):
+            road.add_bus_player(Player(i))
+
+        # Simulate multiple rounds with strategy switching
+        for day in range(rounds):
+            print(f"\nDay {day + 1}: ")
+
+            # Calculate congestion level
+            congestion_lvl = calculate_road(road)
+            print(f"Amount of road taken up: {congestion_lvl * 100:.2f}%.")
+
+            # Calculate delays for all players
+            for player in road.get_players():
+                if player in road.carPlayers:
+                    player.set_delay(calculate_car_delay(road))
+                    print(f"Player {player.get_id()}: Car Delay = {player.delay:.2f}")
+                else:
+                    player.set_delay(calculate_bus_delay(road))
+                    print(f"Player {player.get_id()}: Bus Delay = {player.delay:.2f}")
+
+            # Switch strategies if allowed
+            if allow_switching:
+                switch_strategy(road)
+
 
 class TestStrategySwitching_Two(unittest.TestCase):
     def test_strategy_switching(self):
